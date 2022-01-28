@@ -1,0 +1,1 @@
+# Apenas arquivos de estudos sobre JavaScript
