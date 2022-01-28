@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <button id="btnSaudacao">Saudação</button>
+    <hr>
+    <input type="text" id="cep">
+    <button id="btnCEP">Consultar CEP</button>
+
+
+
+    <script type="module">
+        
+        /*importação tradicional, estática/carga antecipada. Será baixado antes mesmo da sua utilização
+        import {saudacao, getEnderecoByCEP} from './import/lib.mjs'
+
+         
+        console.log(saudacao())
+        getEnderecoByCEP('39260000')
+            .then(dados => console.log(dados))
+        */
+
+        document.querySelector('#btnSaudacao').addEventListener('click', async ()=>{
+
+            const modulo = await import('./import/lib.mjs') //promise
+            //quando a importação estiver concluída o seu resultado será atribuído à variável e apartir dela temos condições de recuperar os recursos que estão sendo exportados pelo modulo
+            
+            console.log(modulo.saudacao())
+
+            /*trantando a importação como uma promisse
+            import('./import/lib.mjs') //promise
+                .then(module =>console.log(module.saudacao()))*/
+                
+            
+        })
+
+        document.querySelector('#btnCEP').addEventListener('click', async ()=>{
+        
+            let cep = document.querySelector('#cep').value
+
+            if (cep.length == 8) {
+
+                let lib = await import('./import/lib2.mjs')
+
+                lib.getEnderecoByCEP(cep)
+                    .then(dados => console.log(dados))
+
+                /*import('./import/lib2.mjs')
+                    .then(module => {
+                        module.getEnderecoByCEP(cep)
+                            .then(dados => console.log(dados))
+                    })*/
+            }
+
+        })
+       
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <script>
+        
+        class Pessoa{
+            //atributo privado
+            #humor = 0
+
+            constructor(nome){
+                this.nome = nome
+            }
+
+            dizerOi(){
+                return `Olá, meu nome é ${this.nome}`
+            }
+
+
+        }
+
+        let pessoa = new Pessoa('José')
+       console.log(pessoa.dizerOi())
+
+       console.log(pessoa.#humor)
+
+    </script>
+</body>
+
+</html>
