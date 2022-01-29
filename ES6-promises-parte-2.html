@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="teste">
+
+    </div>
+
+    <script>
+        let promessa = new Promise((resolve, reject)=>{
+            /*try {
+                
+            } catch (e) {
+                
+            }*/
+
+            //simular uma requisição http 
+            setTimeout(()=>{
+                //requisição realizada de algum modo
+                let resposta_da_requisicao = {}
+
+                //erro na requisição
+                if (false) {
+                    resposta_da_requisicao = {
+                        codigo: 1050,
+                        erro: 'Falha de autorizacao'
+                    }
+
+                    reject(resposta_da_requisicao)
+                }
+
+                resposta_da_requisicao = {
+                    0: {id: 1, nome: 'joao'},
+                    1: {id: 2, nome: 'jose'},
+                    2: {id: 3, nome: 'maria'}
+                }
+
+                resolve(resposta_da_requisicao)
+
+            },4000)
+
+        }).then(dados=>{
+
+            console.log('primeiro then', dados)
+
+            let promessa2 = new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    //requisição realizada de algum modo
+                    let resposta_da_requisicao = {}
+
+                    //erro na requisição
+                    if (false) {
+                        resposta_da_requisicao = {
+                            codigo: 7788,
+                            erro: 'erro ao recuperar posts'
+                        }
+
+                        reject(resposta_da_requisicao)
+                    }
+
+                    resposta_da_requisicao = {
+                        0: {id: 1, usuario_id:1, posts: [
+                            {id:1, post: 'post 1'},
+                            {id:2, post: 'post 2'}
+                        ]},
+                        1: {id: 2, usuario_id:2, posts: [   
+                            {id:1, post: 'post 1'},
+                            {id:2, post: 'post 2'}
+                        ]},
+                        2: {id: 3, usuario_id:3, posts: [   {id:1, post: 'post 1'},
+                            {id:2, post: 'post 2'}
+                        ]},
+                    }
+
+                    resolve(resposta_da_requisicao)
+
+                },4000)
+            }).then(dados =>{
+                console.log(dados)
+            }).catch(erro =>{
+                console.log(erro)
+            })
+
+            return 'parametro que foi mandado do primeiro then'
+
+        }).then(dados => { //dados são os dados recebidos do resolve, encaminhados por ele
+            console.log('Operacao sequencial: ', dados)
+
+            return 'parametro do terceiro then' //o return é capturado pelo then seguinte, e é usado como parâmetro para ele
+        }).then(param=>{
+            console.log('terceiro then: ', param)
+            
+            return 'parametro do terceiro then para o próximo then'
+
+        }).catch(erro=>{ //erro é o valor que foi encaminhado pelo reject, o catch recupera o dado que o reject manda
+            console.log('Operacao sequencial: ',erro)
+
+            return 'parametro capturado no catch e enviado para o then'
+        }).then(param=>{
+            console.log(param)
+        }).then(()=>{
+            console.log('then')
+        })
+
+    </script>
+</body>
+</html>

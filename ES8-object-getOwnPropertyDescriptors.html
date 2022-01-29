@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <script>
+
+        let objeto = {
+            nome: 'Murillo',
+            profissional:{
+                site: 'murilloaguiar.github.io',
+                profissao: 'programador'
+            },
+            hobbies: [ //array de objetos literais
+                {id:1, hobbie: 'ouvir musica'},
+                {id:2, hobbie: 'dormir'}
+            ],
+            pais: 'brasil'
+        }
+
+        //descritores de propriedades
+        console.log(Object.getOwnPropertyDescriptors(objeto))
+
+        /*Object.defineProperty(objeto, 'nome', {
+            value: 'Murillo',
+            writable: false
+        }) //impedir que o valor da propriedade nome seja modificado
+        
+        console.log(Object.getOwnPropertyDescriptors(objeto))
+        
+        */
+        /*
+        for (let propriedade in objeto ) {
+           console.log(propriedade, objeto[propriedade])
+  
+        }
+
+        Object.defineProperty(objeto, 'hobbies', {
+            enumerable: false
+        }) 
+        
+        console.log(Object.getOwnPropertyDescriptors(objeto))
+
+        console.log('--------------------------')
+
+        for (let propriedade in objeto ) {
+           console.log(propriedade, objeto[propriedade])
+  
+        }*/
+
+        Object.defineProperty(objeto, 'pais', {
+            configurable: false
+        }) 
+        
+        console.log(Object.getOwnPropertyDescriptors(objeto))
+
+    </script>
+
+</body>
+</html>

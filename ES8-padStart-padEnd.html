@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <script>
+
+        //padStart - preenchimento a esquerda
+        let codigo = '1000'
+        //expectativa 0000001000
+        //primeiro parametro é o total de caracteres que a string vai ter, e o segundo quais são as strings para serem adicionadas
+        codigo = codigo.padStart(10, '0')
+        console.log(codigo)
+
+        //padStart - preenchimento a esquerda
+        let codigo2 = '8888'
+        //expectativa 8888******
+
+        codigo2 = codigo2.padEnd(10, '*')
+        console.log(codigo2)
+
+    </script>
+
+</body>
+</html>
