@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        
+        const promise = new Promise ((resolve, reject)=>{
+            return setTimeout(() => {
+                resolve('Promise 1 resolvida')
+            },2000)
+        })
+
+        const promise2 = new Promise ((resolve, reject)=>{
+            return setTimeout(() => {
+                reject('Promise 2 rejeitada')
+            },2000)
+        })
+
+        const promise3 = new Promise ((resolve, reject)=>{
+            return setTimeout(() => {
+                resolve('Promise 3 resolvida')
+            },2000)
+        })
+
+        const promises = [promise, promise2, promise3]
+
+        Promise.allSettled(promises)
+            .then(resultados=>{
+                //console.log(resultados)
+
+                resultados.forEach(element => {
+                    if (element.status == 'fulfilled') {
+                        console.log(element.value)
+                    } else {
+                        console.log(element.reason)
+                    }
+                });
+            })
+    </script>
+</body>
+</html>

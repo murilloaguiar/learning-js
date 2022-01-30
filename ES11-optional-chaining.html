@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        let objeto = {
+            '2021': {
+                janeiro: {
+                    pessoal: 2000,
+                    casa: 1500,
+                    investimento: 1000
+                },
+                feveiro: {
+                    pessoal: 1800,
+                    casa: 1600,
+                    investimento: 800
+                }
+            }
+        }
+
+        console.log(objeto['2021'].janeiro.pessoal)
+
+        //tentando acessar um atributo inexistente
+        //console.log(objeto['2021'].marco.pessoal)
+
+        //verifique se o objeto marco existe, se existir acessa os seus atributos, se não, não faz nada
+        console.log(objeto['2021'].marco?.pessoal)
+
+    </script>
+</body>
+</html>

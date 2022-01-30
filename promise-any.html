@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        const promise1 = new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                reject('promise1 resolvida')
+            },2000)
+        })
+
+        const promise2 = new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                reject('promise2 resolvida')
+            },3000)
+        })
+
+        const promise3 = new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                reject('promise3 resolvida')
+            },1000)
+            
+        })
+
+        let promises = [promise1, promise2, promise3]
+
+        Promise.any(promises)
+            .then(resolve=>{
+                console.log(resolve)
+            })
+            .catch(error=> console.log(error))
+
+
+
+    </script>
+</body>
+</html>

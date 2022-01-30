@@ -7,9 +7,16 @@
         
         class Pessoa{
             //atributo privado
-            #humor = 0
+            #humor = null
+
+            #mensagens = [
+                'Seja feliz',
+                'Não estou pra conversa hoje'
+            ]
 
             constructor(nome){
+                //sucesso na execução do método privado
+                this.#mudarHumor()
                 this.nome = nome
             }
 
@@ -17,13 +24,28 @@
                 return `Olá, meu nome é ${this.nome}`
             }
 
+            //método público que retorna um atributo privado
+            getHumor(){
+                return this.#humor
+            }
 
+            getMensagem(){
+                return this.#mensagens[this.#humor]
+            }
+
+            //método privado
+            #mudarHumor(){
+                this.#humor = Math.floor(Math.random()*2)
+            }
+   
         }
 
         let pessoa = new Pessoa('José')
        console.log(pessoa.dizerOi())
 
-       console.log(pessoa.#humor)
+       //console.log(pessoa.#humor) 
+
+       console.log(pessoa.getMensagem())  
 
     </script>
 </body>

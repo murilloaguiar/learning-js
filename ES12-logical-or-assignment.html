@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+
+        //logical or-assignment (||=)
+        let v1 = 10
+        let v2 = null //false -> null, undefined, 0, ''
+        let v3 = undefined //false
+        let v4 = 0 //false
+        let v5 = '' //false
+        let v6 = 'string'
+
+        v1 ||= 0
+        v2 ||= 201
+        v3 ||= 301
+        v4 ||= 401
+        v5 ||= 501
+        v6 ||= 20
+
+        console.log('v1 = ', v1)
+        console.log('v2 = ', v2)
+        console.log('v3 = ', v3)
+        console.log('v4 = ', v4)
+        console.log('v5 = ', v5)
+        console.log('v6 = ', v6)
+
+        // ---------------------
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <script>
+        let v1 = 10
+        let v2 = null //nula -> null ou undefined
+        
+        //logical nullish assignment (??=)
+        v1 ??= 50
+        v2 ??= 20
+        console.log('v1 = ', v1)
+        console.log('v2 = ', v2)
+
+        // ---------------------
+
+        let carro = {
+            marca: 'Volkswagen',
+            modelo: 'jetta'
+        }
+
+        carro.marca ??= 'Volkswagen'
+        carro.modelo ??= 'Gol'
+        //como é null, é criado o atributo e atribuido o valor à ele
+        carro.ano ??= '2022'
+
+        console.log(carro)
+
+        // ---------------------
+
+        let array = ['uva', 'joão', null, undefined, 5,[]]
+        array.forEach((item, indice)=>{
+            array[indice] ??= '<não informado>'
+        })
+
+        console.log(array)
+
+    </script>
+</body>
+</html>
